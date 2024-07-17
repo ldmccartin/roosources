@@ -25,7 +25,7 @@ function App() {
     <>
       <h1>Roosources with Bookaburra</h1>
       <div className="card">
-        {resources.map(r => (<><a href={r.url}></a><p>{r.name}</p></>))}
+        {resources.map(r => (<><a href={r.url}><p>{r.name}</p></a></>))}
       </div>
     </>
   )
