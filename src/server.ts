@@ -1,15 +1,28 @@
 import axios from 'axios';
 
-export interface resource {
-  name: string,
-  url: string
+export interface Resource {
+  name: string;
+  url: string;
+  ogData?: {
+    ogTitle?: string;
+    ogDescription?: string;
+    ogImage?: [{
+      url: string;
+    }]
+  }
 }
 
-const router = axios.create({ baseURL: 'https://bookaburra-am7bw0fn.b4a.run/'})
+// const router = axios.create({ baseURL: 'https://bookaburra-am7bw0fn.b4a.run/'})
+const router = axios.create({ baseURL: 'http://localhost:3000/'})
 
-const getResources = async (): Promise<[resource]>  => {
+const getResources = async (): Promise<[Resource]>  => {
   const { data } = await router.get('/all');
   return data;
 };
 
-export { getResources };
+const addResource = async (url: string): Promise<void> => {
+  console.log(url)
+  await router.post('/resource', {url})
+}
+
+export { getResources, addResource };

@@ -1,5 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 import tailwindcssAnimate from 'tailwindcss-animate';
+import { addDynamicIconSelectors } from '@iconify/tailwind';
 
 export default {
   darkMode: ["class"],
@@ -35,5 +36,5 @@ export default {
       },
     },
   },
-  plugins: [tailwindcssAnimate],
+  plugins: [tailwindcssAnimate, addDynamicIconSelectors()],
 }
