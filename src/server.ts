@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 export interface Resource {
-  name: string;
+  _id: string;
   url: string;
   ogData?: {
     ogTitle?: string;
@@ -21,8 +21,11 @@ const getResources = async (): Promise<[Resource]>  => {
 };
 
 const addResource = async (url: string): Promise<void> => {
-  console.log(url)
   await router.post('/resource', {url})
 }
 
-export { getResources, addResource };
+const deleteResource = async (_id: string): Promise<void> => {
+  await router.delete(`/resource/${_id}`)
+}
+
+export { getResources, addResource, deleteResource };
