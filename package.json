@@ -12,6 +12,8 @@
   "dependencies": {
     "@iconify-json/svg-spinners": "^1.1.2",
     "@iconify/tailwind": "^1.1.2",
+    "@radix-ui/react-dialog": "^1.1.1",
+    "@radix-ui/react-dropdown-menu": "^2.1.1",
     "@radix-ui/react-separator": "^1.1.0",
     "@radix-ui/react-slot": "^1.1.0",
     "axios": "1.7.2",

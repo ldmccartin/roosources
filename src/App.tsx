@@ -16,6 +16,7 @@ import Kangaroo from './assets/kangaroo.svg';
 import { getResources, addResource, deleteResource } from './server';
 import type { Resource } from './server';
 import './App.css'
+import { Header } from './components/layout/header';
 
 function App() {
   const [resources, setResources] = useState<Resource[]>([]);
@@ -39,23 +40,19 @@ function App() {
   }, [refresh]);
 
   return (
-    <>
-      <div className='flex px-16 mt-4 items-center'>
-        <img src={Kangaroo} className='h-12 w-12 mr-4'></img>
-        <h1 className='text-4xl'>RooSources</h1>
-      </div>
-      <Separator className='mb-12 mt-4' />
-      <div className='flex gap-16 px-16'>
+    <main className='bg-muted/60 min-h-screen'>
+      <Header/>
+      <div className='flex gap-16 px-16 mt-5'>
         {resources.map((resource) => renderCard(resource, setRefresh))}
         {renderAddNewCard(newResourceUrl, refresh, setNewResourceUrl, setRefresh)}
       </div>
-    </>
+    </main>
   )
 }
 
 function renderAddNewCard(newResourceUrl: string, refresh: boolean, setNewResourceUrl: Dispatch<SetStateAction<string>>, setRefresh: Dispatch<SetStateAction<boolean>>) {
   return (
-    <Card className='bg-[#5f6c68] w-96 border-0 flex flex-col justify-between'>
+    <Card className='w-96 border-0 flex flex-col justify-between'>
       {refresh ? <Loader className='self-center m-auto' /> :
         <>
           <CardHeader>
@@ -97,7 +94,7 @@ function renderCard(resource: Resource, setRefresh: Dispatch<SetStateAction<bool
   const truncatedDescription = truncate(resource?.ogData?.ogDescription, { length: 100 })
 
   return (
-    <Card key={`${resource._id}`} className='bg-[#5f6c68] w-96 border-0 flex flex-col justify-between'>
+    <Card key={`${resource._id}`} className='w-96 border-0 flex flex-col justify-between'>
       <CardHeader>
         <a className='max-w-fit text-white' href={resource.url}>
           <CardTitle className='text-1xl'>{capitalisedName}</CardTitle>

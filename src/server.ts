@@ -12,8 +12,8 @@ export interface Resource {
   }
 }
 
-// const router = axios.create({ baseURL: 'https://bookaburra-am7bw0fn.b4a.run/'})
-const router = axios.create({ baseURL: 'http://localhost:3000/'})
+const router = axios.create({ baseURL: 'https://bookaburra-am7bw0fn.b4a.run/'})
+// const router = axios.create({ baseURL: 'http://localhost:3000/'})
 
 const getResources = async (): Promise<[Resource]>  => {
   const { data } = await router.get('/all');
